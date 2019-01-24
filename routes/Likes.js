@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/User');
+var Like = require('../models/Like');
 
 router.get('/:id?', function(req, res, next) {  
     if (req.params.id) {  
-        User.getUsersById(req.params.id, function(err, rows) {  
+        Like.getLikesById(req.params.id, function(err, rows) {  
             if (err) {  
                 res.json(err);  
             } else {  
@@ -12,9 +12,9 @@ router.get('/:id?', function(req, res, next) {
             }  
         });  
     } else {  
-        User.getAllUsers(function(err, rows) {  
+        Like.getAllLikes(function(err, rows) {  
             if (err) {  
-                res.json(err);   
+                res.json(err);  
             } else {  
                 res.json(rows);  
             }  
@@ -23,7 +23,7 @@ router.get('/:id?', function(req, res, next) {
 });  
 
 router.post('/', function(req, res, next) {  
-    User.addUser(req.body, function(err, count) {  
+    Like.addLike(req.body, function(err, count) {  
         if (err) {  
             res.json(err);  
         } else {  
@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
 });  
 
 router.delete('/:id', function(req, res, next) {  
-    User.deleteUser(req.params.id, function(err, count) {  
+    Like.deleteLike(req.params.id, function(err, count) {  
         if (err) {  
             res.json(err);  
         } else {  
@@ -42,7 +42,7 @@ router.delete('/:id', function(req, res, next) {
     });  
 });  
 router.put('/:id', function(req, res, next) {  
-    User.updateUser(req.params.id, req.body, function(err, rows) {  
+    Like.updateLike(req.params.id, req.body, function(err, rows) {  
         if (err) {  
             res.json(err);  
         } else {  

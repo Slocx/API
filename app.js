@@ -7,7 +7,23 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var Events = require('./routes/Events')
+var Categories = require('./routes/Categories');
+var Comments = require('./routes/Comments');
+var Displays = require('./routes/Displays');
+var Events = require('./routes/Events');
+var Includes = require('./routes/Includes');
+var Likes = require('./routes/Likes');
+var Migrations = require('./routes/Migrations');
+var Orders = require('./routes/Orders');
+var Pictures_event = require('./routes/Pictures_event');
+var Pictures_product = require('./routes/Pictures_product');
+var Products = require('./routes/Products');
+var Registers = require('./routes/Registers')
+var Schools = require('./routes/Schools');
+var Statuses_event = require('./routes/Statuses_event');
+var Statuses_user = require('./routes/Statuses_user');
+var Stocks = require('./routes/Stocks');
+var Votes = require('./routes/Votes');
 var app = express();
 
 
@@ -25,7 +41,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/Categories', Categories);
+app.use('/Comments', Comments);
+app.use('/Displays', Displays);
 app.use('/Events', Events);
+app.use('/Includes', Includes);
+app.use('/Likes', Likes);
+app.use('/Migrations', Migrations);
+app.use('/Orders', Orders);
+app.use('/Pictures_event', Pictures_event);
+app.use('/Pictures_product', Pictures_product);
+app.use('/Products', Products);
+app.use('/Registers', Registers);
+app.use('/Schools', Schools);
+app.use('/Statuses_event', Statuses_event);
+app.use('/Statuses_user', Statuses_user);
+app.use('/Stocks', Stocks);
+app.use('/Votes', Votes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

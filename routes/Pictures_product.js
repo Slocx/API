@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/User');
+var Picture_product = require('../models/Picture_product');
 
 router.get('/:id?', function(req, res, next) {  
     if (req.params.id) {  
-        User.getUsersById(req.params.id, function(err, rows) {  
+        Picture_product.getPictures_productById(req.params.id, function(err, rows) {  
             if (err) {  
                 res.json(err);  
             } else {  
@@ -12,9 +12,9 @@ router.get('/:id?', function(req, res, next) {
             }  
         });  
     } else {  
-        User.getAllUsers(function(err, rows) {  
+        Picture_product.getAllPictures_product(function(err, rows) {  
             if (err) {  
-                res.json(err);   
+                res.json(err);  
             } else {  
                 res.json(rows);  
             }  
@@ -23,7 +23,7 @@ router.get('/:id?', function(req, res, next) {
 });  
 
 router.post('/', function(req, res, next) {  
-    User.addUser(req.body, function(err, count) {  
+    Picture_product.addPicture_product(req.body, function(err, count) {  
         if (err) {  
             res.json(err);  
         } else {  
@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
 });  
 
 router.delete('/:id', function(req, res, next) {  
-    User.deleteUser(req.params.id, function(err, count) {  
+    Picture_product.deletePicture_product(req.params.id, function(err, count) {  
         if (err) {  
             res.json(err);  
         } else {  
@@ -42,7 +42,7 @@ router.delete('/:id', function(req, res, next) {
     });  
 });  
 router.put('/:id', function(req, res, next) {  
-    User.updateUser(req.params.id, req.body, function(err, rows) {  
+    Picture_product.updatePicture_product(req.params.id, req.body, function(err, rows) {  
         if (err) {  
             res.json(err);  
         } else {  
