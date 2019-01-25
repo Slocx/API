@@ -4,7 +4,7 @@ var Status_event = require('../models/Status_event');
 
 router.get('/:id?', function(req, res, next) {  
     if (req.params.id) {  
-        Status_event.getStatuses_event_eventById(req.params.id, function(err, rows) {  
+        Status_event.getStatuses_eventById(req.params.id, function(err, rows) {  
             if (err) {  
                 res.json(err);  
             } else {  
@@ -12,7 +12,7 @@ router.get('/:id?', function(req, res, next) {
             }  
         });  
     } else {  
-        Status_event.getAllStatuses_event_event(function(err, rows) {  
+        Status_event.getAllStatuses_event(function(err, rows) {  
             if (err) {  
                 res.json(err);  
             } else {  
