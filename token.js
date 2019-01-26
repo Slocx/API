@@ -10,7 +10,7 @@ const secret = 'secret';
 app.use(bodyParser.urlencoded({extended: false}));
 
 function createToken(){
-    let expirationDate = Math.floor(Date.now() / 1000) + 30
+    let expirationDate = Math.floor(Date.now() / 1000) + 300
     var token = jwt.sign({ userID: user.email, exp: expirationDate }, secret);
     return token; 
 }
