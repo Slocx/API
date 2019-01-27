@@ -17,7 +17,8 @@ router.post('/', function(req, res, next) {
             if(JSON.stringify(rows.length)==1) {
                 res.json({token:createToken(rows[0])});
             } else {
-                res.sendStatus(400);
+                res.status(403);
+                res.send("Wrong password buddy");
             } 
         });   
     }  
@@ -25,4 +26,9 @@ router.post('/', function(req, res, next) {
 router.get('/',jwtVerifier({secret:secret}), (req,res) =>{
     res.send('Congratulations, you made it to home');
 })
+router.use((err, req, res, next) => {
+    if (err.name === 'UnauthorizedError') {
+        res.status(500). send(err.message);
+    }
+});
 module.exports = router;

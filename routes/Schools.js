@@ -11,6 +11,14 @@ router.get('/:id?', function(req, res, next) {
                 res.json(rows);  
             }  
         });  
+    } else if(req.body.School_name){
+        School.getIdSchoolsByName(req.body.School_name, function(err, rows){
+            if (err) {
+                res.json(err);
+            } else {
+                res.json(rows[0].id_school);
+            }
+        });
     } else {  
         School.getAllSchools(function(err, rows) {  
             if (err) {  

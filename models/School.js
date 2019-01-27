@@ -5,7 +5,10 @@ var School = {
     },  
     getSchoolsById: function(id, callback) {  
         return db.query("select * from School where id_School=?", [id], callback);  
-    },  
+    },
+    getIdSchoolsByName: function(School_name, callback) {  
+        return db.query("select * from School where School_name=?", [School_name], callback);  
+    },   
     addSchool: function(School, callback) {  
         return db.query("Insert into School(School_name) values(?)", [School.School_name], callback);  
     },  

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
+var School = require('../models/School');
 
 router.get('/:id?', function(req, res, next) {  
     if (req.params.id) {  
@@ -23,13 +24,15 @@ router.get('/:id?', function(req, res, next) {
 });
 
 
-router.post('/', function(req, res, next) {  
-    User.addUser(req.body, function(err, count) {  
+router.post('/', function(req, res, next) {
+    School.getIdSchoolsByName(req.body.School_name, function (err, school){ 
+    User.addUser(req.body,school[0].id_school, function(err) {  
         if (err) {  
             res.json(err);  
         } else {  
             res.json(req.body); //or return count for 1 & 0  
         }  
+    })
     });  
 });  
 
