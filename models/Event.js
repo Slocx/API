@@ -1,8 +1,12 @@
 var db = require('../dbconnection'); //reference of dbconnection.js  
 var Event = {  
     getAllEvents: function(callback) {  
-        return db.query("Select * from event", callback);  
-    },  
+        return db.query("Select * from event ORDER BY event_date DESC ", callback);  
+    },
+    getEventsByStatus: function(id_status, callback) {  
+        return db.query("Select * from event WHERE id_status_event=? ORDER BY event_date DESC ",[id_status], callback);  
+    },
+    
     getEventsById: function(id, callback) {  
         return db.query("select * from event where id_event=?", [id], callback);  
     },  

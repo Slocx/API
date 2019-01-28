@@ -11,7 +11,15 @@ router.get('/:id?', function(req, res, next) {
                 res.json(rows);  
             }  
         });  
-    } else {  
+    } else if(req.body.id_status_event){
+        Event.getEventsByStatus(req.body.id_status_event, function(err, rows){
+            if (err) {
+                res.json(err);
+            } else {
+                res.json(rows);
+            }
+    });
+    }else {  
         Event.getAllEvents(function(err, rows) {  
             if (err) {  
                 res.json(err);  

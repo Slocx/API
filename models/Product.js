@@ -2,7 +2,11 @@ var db = require('../dbconnection'); //reference of dbconnection.js
 var Product = {  
     getAllProducts: function(callback) {  
         return db.query("Select * from Product", callback);  
-    },  
+    },
+    getAllProductsByOrder: function(callback){
+        return db.query("SELECT Product.id_Product,Product_name,id_order as TotOrder FROM `order` inner join product ON `order`.id_product = product.id_product GROUP BY `order`.id_product ORDER BY TotOrder DESC",callback);
+    },
+
     getProductsById: function(id, callback) {  
         return db.query("select * from Product where id_Product=?", [id], callback);  
     },  

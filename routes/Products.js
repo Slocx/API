@@ -2,6 +2,18 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/Product');
 
+
+router.get('/top', function(req, res, next) {  
+    Product.getAllProductsByOrder(function(err, rows) {  
+        if (err) {  
+            res.json(err);  
+        } else {  
+            res.json(rows);
+        }  
+    });  
+});  
+
+
 router.get('/:id?', function(req, res, next) {  
     if (req.params.id) {  
         Product.getProductsById(req.params.id, function(err, rows) {  
@@ -21,6 +33,8 @@ router.get('/:id?', function(req, res, next) {
         });  
     }  
 });  
+
+
 
 router.post('/', function(req, res, next) {  
     Product.addProduct(req.body, function(err, count) {  
