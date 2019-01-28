@@ -21,6 +21,7 @@ var Products = require('./routes/Products');
 var Registers = require('./routes/Registers')
 var Schools = require('./routes/Schools');
 var Statuses_event = require('./routes/Statuses_event');
+var Statuses_order = require('./routes/Statuses_order');
 var Statuses_user = require('./routes/Statuses_user');
 var Votes = require('./routes/Votes');
 var app = express();
@@ -50,6 +51,7 @@ app.use('/Products', Products);
 app.use('/Registers', Registers);
 app.use('/Schools', Schools);
 app.use('/Statuses_event', Statuses_event);
+app.use('/Statuses_order', Statuses_order);
 app.use('/Statuses_user', Statuses_user);
 app.use('/Votes', Votes);
 
