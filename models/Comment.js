@@ -4,16 +4,16 @@ var Comment = {
         return db.query("Select * from Comment", callback);  
     },  
     getCommentsById: function(id, callback) {  
-        return db.query("select * from Comment where id_Comment=?", [id], callback);  
+        return db.query("select * from Comment where id_comment=?", [id], callback);  
     },  
     addComment: function(Comment, callback) {  
-        return db.query("Insert into Comment(Comment_body) values(?)", [Comment.Comment_body], callback);  
+        return db.query("Insert into Comment(id_picture_event, id_user, comment_body) values(?,?,?)", [Comment.id_picture_event, Comment.id_user, Comment.comment_body], callback);  
     },  
     deleteComment: function(id, callback) {  
-        return db.query("delete from Comment where id_Comment=?", [id], callback);  
+        return db.query("delete from Comment where id_comment=?", [id], callback);  
     },  
     updateComment: function(id, Comment, callback) {  
-        return db.query("update Comment set Comment_body=? where id_Comment=?", [Comment.Comment_body,id], callback);  
+        return db.query("update Comment set id_picture_event=?, id_user=?,comment_body=? where id_picture_event=?", [Comment.id_picture_event, Comment.id_user, Comment.comment_body,id], callback);  
     }  
 };  
 module.exports = Comment;  

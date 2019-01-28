@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var routes = require('./routes/index');
+//routes :
 var users = require('./routes/users');
 var Categories = require('./routes/Categories');
 var Comments = require('./routes/Comments');
@@ -26,10 +26,6 @@ var Stocks = require('./routes/Stocks');
 var Votes = require('./routes/Votes');
 var app = express();
 
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors());
@@ -39,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+//app.use('/', routes);
 app.use('/users', users);
 app.use('/Categories', Categories);
 app.use('/Comments', Comments);
@@ -58,6 +54,7 @@ app.use('/Statuses_event', Statuses_event);
 app.use('/Statuses_user', Statuses_user);
 app.use('/Stocks', Stocks);
 app.use('/Votes', Votes);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
