@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var routes = require('./routes/index');
+//routes :
 var users = require('./routes/users');
 var login = require('./routes/login');
 var Categories = require('./routes/Categories');
@@ -14,7 +14,6 @@ var Displays = require('./routes/Displays');
 var Events = require('./routes/Events');
 var Includes = require('./routes/Includes');
 var Likes = require('./routes/Likes');
-var Migrations = require('./routes/Migrations');
 var Orders = require('./routes/Orders');
 var Pictures_event = require('./routes/Pictures_event');
 var Pictures_product = require('./routes/Pictures_product');
@@ -22,15 +21,11 @@ var Products = require('./routes/Products');
 var Registers = require('./routes/Registers')
 var Schools = require('./routes/Schools');
 var Statuses_event = require('./routes/Statuses_event');
+var Statuses_order = require('./routes/Statuses_order');
 var Statuses_user = require('./routes/Statuses_user');
-var Stocks = require('./routes/Stocks');
 var Votes = require('./routes/Votes');
 var app = express();
 
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors());
@@ -60,6 +55,7 @@ app.use('/api/Statuses_user', Statuses_user);
 app.use('/api/Stocks', Stocks);
 app.use('/api/Votes', Votes);
 app.use('/api/login',login);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
