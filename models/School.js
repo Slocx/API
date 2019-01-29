@@ -9,14 +9,15 @@ var School = {
     getIdSchoolsByName: function(School_name, callback) {  
         return db.query("select * from School where School_name=?", [School_name], callback);  
     },   
+
     addSchool: function(School, callback) {  
-        return db.query("Insert into School(School_name) values(?)", [School.School_name], callback);  
+        return db.query("Insert into School(school_name) values(?)", [School.school_name], callback);  
     },  
     deleteSchool: function(id, callback) {  
-        return db.query("delete from School where id_School=?", [id], callback);  
+        return db.query("delete from School where id_school=?", [id], callback);  
     },  
     updateSchool: function(id, School, callback) {  
-        return db.query("update School set School_name=? where id_School=?", [School.School_name, id], callback);  
+        return db.query("update School set school_name=? where id_school=?", [School.school_name, id], callback);  
     }  
 };  
 module.exports = School;  
