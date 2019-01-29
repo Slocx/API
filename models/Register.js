@@ -3,11 +3,11 @@ var Register = {
     getAllRegisters: function(callback) {  
         return db.query("Select * from Register", callback);  
     },  
-    getRegistersById: function(id, callback) {  
-        return db.query("select * from Register where id_user=?", [id], callback);  
+    getRegistersById: function(Register, callback) {  
+        return db.query("select * from Register where id_user=? && id_event=?", [Register.id_user,Register.id_event], callback);  
     },  
     addRegister: function(Register, callback) {  
-        return db.query("Insert into Register(id_user) values(?)", [Register.id_user], callback);  
+        return db.query("Insert into Register(id_user,id_event) values(?,?)", [Register.id_user,Register.id_event], callback);  
     },  
     deleteRegister: function(id, callback) {  
         return db.query("delete from Register where id_user=?", [id], callback);  

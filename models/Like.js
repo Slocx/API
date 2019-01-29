@@ -1,10 +1,10 @@
 var db = require('../dbconnection'); //reference of dbconnection.js  
 var Like = {  
     getAllLikes: function(callback) {  
-        return db.query("Select * from Like", callback);  
+        return db.query("SELECT id_picture_event, Count(id_user)as LIKES FROM webproject.`like`GROUP BY id_picture_event;", callback);  
     },  
-    getLikesById: function(id, callback) {  
-        return db.query("select * from Like where id_user=?", [id], callback);  
+    getLikesById: function(id_picture_event, callback) {  
+        return db.query("SELECT id_picture_event, Count(id_user)as LIKES FROM webproject.`like` WHERE id_picture_event=? GROUP BY id_picture_event", [id_picture_event], callback);  
     },  
     addLike: function(Like, callback) {  
         return db.query("Insert into Like(id_user) values(?)", [Like.id_user], callback);  

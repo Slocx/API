@@ -11,6 +11,15 @@ router.get('/:id?', function(req, res, next) {
                 res.json(rows);  
             }  
         });  
+    } 
+    if (req.body.id_picture_event) {  
+        Comment.getCommentsByIdPictureEvent(req.body.id_picture_event, function(err, rows) {  
+            if (err) {  
+                res.json(err);  
+            } else {  
+                res.json(rows);  
+            }  
+        });  
     } else {  
         Comment.getAllComments(function(err, rows) {  
             if (err) {  

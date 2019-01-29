@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var Like = require('../models/Like');
 
-router.get('/:id?', function(req, res, next) {  
-    if (req.params.id) {  
-        Like.getLikesById(req.params.id, function(err, rows) {  
+router.get('/', function(req, res, next) {  
+    if (req.body.id_picture_event) {  
+        Like.getLikesById(req.body.id_picture_event, function(err, rows) {  
             if (err) {  
                 res.json(err);  
             } else {  

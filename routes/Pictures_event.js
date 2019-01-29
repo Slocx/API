@@ -11,7 +11,15 @@ router.get('/:id?', function(req, res, next) {
                 res.json(rows);  
             }  
         });  
-    } else {  
+    } else if(req.body.id_event){
+        Picture_event.getPictures_Picture_eventByIdEvent(req.body.id_event, function(err,rows){
+            if(err){
+                res.json(err);
+            } else {
+                res.json(rows);
+            }
+    });
+    }else {  
         Picture_event.getAllPictures_event(function(err, rows) {  
             if (err) {  
                 res.json(err);  

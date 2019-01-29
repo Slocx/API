@@ -2,15 +2,19 @@ var express = require('express');
 var router = express.Router();
 var Register = require('../models/Register');
 
-router.get('/:id?', function(req, res, next) {  
-    if (req.params.id) {  
-        Register.getRegistersById(req.params.id, function(err, rows) {  
+router.get('/', function(req, res, next) {  
+    if (req.body) {  
+        Register.getRegistersById(req.body, function(err, rows) { 
+            if(JSON.stringify(rows.length)==1) { 
             if (err) {  
                 res.json(err);  
             } else {  
-                res.json(rows);  
+                res.send({isRegistered:1});  
             }  
-        });  
+        }else{
+            res.send({isRegistered:0});
+        }
+    });  
     } else {  
         Register.getAllRegisters(function(err, rows) {  
             if (err) {  
