@@ -8,10 +8,10 @@ var Comment = {
     }, 
 
     getCommentsById: function(id, callback) {  
-        return db.query("select * from Comment where id_comment=?", [id], callback);  
+        return db.query("select * from Comment where id_comment=?", [id], callback);   
     },  
     addComment: function(Comment, callback) {  
-        return db.query("Insert into Comment(comment_body, comment_date, id_picture_event, id_user) values(?,?,?,?)", [Comment.comment_body, Comment.comment_date, Comment.id_picture_event, Comment.id_user], callback);  
+        return db.query("Insert into Comment(comment_body, id_picture_event, id_user) values(?,?,?)", [Comment.comment_body, Comment.id_picture_event, Comment.id_user], callback);  
     },  
     deleteComment: function(id, callback) {  
         return db.query("delete from Comment where id_comment=?", [id], callback);  

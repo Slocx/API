@@ -6,8 +6,8 @@ var User = {
     getUsersById: function(id, callback) {  
         return db.query("select * from User where id_User=?", [id], callback);  
     },
-    addUser: function(User,id_school, callback) {  
-        return db.query("Insert into User(first_name, last_name, email, password, id_status_user, id_school) values(?,?,?,?,?,?)", [User.first_name, User.last_name, User.email, User.password, User.id_status_user, id_school], callback);  
+    addUser: function(User, callback) {  
+        return db.query("Insert into User(first_name, last_name, email, password, id_school) values(?,?,?,?,?)", [User.first_name, User.last_name, User.email, User.password, User.id_school], callback);  
     },  
 
     deleteUser: function(id, callback) {  

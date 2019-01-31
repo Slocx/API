@@ -35,7 +35,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/', routes);
 app.use('/api/users', users);
 app.use('/api/Categories', Categories);
 app.use('/api/Comments', Comments);
@@ -43,7 +42,6 @@ app.use('/api/Displays', Displays);
 app.use('/api/Events', Events);
 app.use('/api/Includes', Includes);
 app.use('/api/Likes', Likes);
-app.use('/api/Migrations', Migrations);
 app.use('/api/Orders', Orders);
 app.use('/api/Pictures_event', Pictures_event);
 app.use('/api/Pictures_product', Pictures_product);
@@ -52,7 +50,6 @@ app.use('/api/Registers', Registers);
 app.use('/api/Schools', Schools);
 app.use('/api/Statuses_event', Statuses_event);
 app.use('/api/Statuses_user', Statuses_user);
-app.use('/api/Stocks', Stocks);
 app.use('/api/Votes', Votes);
 app.use('/api/login',login);
 
