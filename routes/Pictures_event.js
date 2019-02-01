@@ -12,7 +12,7 @@ router.get('/:id?', function(req, res, next) {
             }  
         });  
     } else if(req.body.id_event){
-        Picture_event.getPictures_Picture_eventByIdEvent(req.body.id_event, function(err,rows){
+        Picture_event.getPictures_Picture_eventByIdEvent(req.body, function(err,rows){
             if(err){
                 res.json(err);
             } else {
@@ -40,14 +40,16 @@ router.post('/', function(req, res, next) {
     });  
 });  
 
-router.delete('/:id', function(req, res, next) {  
-    Picture_event.deletePicture_event(req.params.id, function(err, count) {  
-        if (err) {  
-            res.json(err);  
-        } else {  
-            res.json(count);  
-        }  
-    });  
+router.delete('/', function(req, res, next) {
+    if(req.body.id_picture_event && req.body.id_user){
+        Picture_event.deletePicture_event(req.body, function(err, count) {  
+            if (err) {  
+                res.json(err);  
+            } else {  
+                res.json(count);  
+            }  
+        });  
+    }
 });  
 router.put('/:id', function(req, res, next) {  
     Picture_event.updatePicture_event(req.params.id, req.body, function(err, rows) {  

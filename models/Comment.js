@@ -3,8 +3,8 @@ var Comment = {
     getAllComments: function(callback) {  
         return db.query("Select * from comment", callback);  
     },
-    getCommentsByIdPictureEvent: function(id, callback) {  
-        return db.query("select * from comment where id_picture_event=?", [id], callback);  
+    getCommentsByIdPictureEvent: function(comment, callback) {  
+        return db.query("select * from comment where id_picture_event=? && id_status_content=?", [comment.id_picture_event,comment.id_status_content], callback);  
     }, 
 
     getCommentsById: function(id, callback) {  

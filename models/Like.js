@@ -5,12 +5,15 @@ var Like = {
     },  
     getLikesById: function(id_picture_event, callback) {  
         return db.query("SELECT id_picture_event, Count(id_user)as LIKES FROM webproject.`like` WHERE id_picture_event=? GROUP BY id_picture_event", [id_picture_event], callback);  
+    },
+    HasLiked: function(like, callback) {  
+        return db.query("SELECT id_picture_event, id_user LIKES FROM webproject.`like` WHERE id_picture_event=? && id_user=?", [like.id_picture_event,like.id_user], callback);  
     },  
     addLike: function(Like, callback) {  
-        return db.query("Insert into Like(id_user,id_picture_event) values(??)", [Like.id_user,Like.id_picture_event], callback);  
+        return db.query("Insert into `Like`(id_user,id_picture_event) values(?,?)", [Like.id_user,Like.id_picture_event], callback);  
     },  
-    deleteLike: function(id, callback) {  
-        return db.query("delete from Like where id_user=?", [id], callback);  
+    deleteLike: function(like, callback) {  
+        return db.query("delete from `Like` where id_user=? && id_picture_event=?", [like.id_user,like.id_picture_event], callback);  
     },  
     updateLike: function(id, Like, callback) {  
         return db.query("update Like set where id_Like=?", [id], callback);  

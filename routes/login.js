@@ -7,7 +7,7 @@ const secret = 'secret';
 
 function createToken(user){
     let expirationDate = Math.floor(Date.now() / 1000) + 300;
-    var token = jwt.sign({id_user: user.id_user, first_name:user.first_name, last_name:user.last_name, id_status_user: user.id_status_user, exp: expirationDate }, secret);
+    var token = jwt.sign({id_user: user.id_user, first_name:user.first_name, last_name:user.last_name, id_status_user: user.id_status_user, profile_pic: user.profile_pic, exp: expirationDate }, secret);
     return token; 
 }
 

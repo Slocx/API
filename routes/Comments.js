@@ -13,7 +13,7 @@ router.get('/:id?', function(req, res, next) {
         });  
     } 
     if (req.body.id_picture_event) {  
-        Comment.getCommentsByIdPictureEvent(req.body.id_picture_event, function(err, rows) {  
+        Comment.getCommentsByIdPictureEvent(req.body, function(err, rows) {  
             if (err) {  
                 res.json(err);  
             } else {  
@@ -41,8 +41,8 @@ router.post('/', function(req, res, next) {
     });  
 });  
 
-router.delete('/:id', function(req, res, next) {  
-    Comment.deleteComment(req.params.id, function(err, count) {  
+router.delete('/', function(req, res, next) {  
+    Comment.deleteComment(req.body.id_comment, function(err, count) {  
         if (err) {  
             res.json(err);  
         } else {  
