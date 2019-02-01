@@ -10,7 +10,9 @@ var Product = {
         return db.query("select * from Product where id_product=?", [id], callback);  
     },  
     addProduct: function(Product, callback) {  
-        return db.query("Insert into Product(Product_name, product_desc, Product_price, stock, id_category) values(?,?,?,?,?)", [Product.Product_name, Product.Product_desc, Product.Product_price, Product.stock, Product.id_category], callback);  
+        db.query("Insert into Product(product_name, product_desc, product_price, stock, id_category) values(?,?,?,?,?)", [Product.product_name, Product.product_desc, Product.product_price, Product.stock, Product.id_category]);  
+        return db.query("SELECT LAST_INSERT_ID() as id_product", callback);
+
     },  
     deleteProduct: function(id, callback) {  
         return db.query("delete from Product where id_product=?", [id], callback);  

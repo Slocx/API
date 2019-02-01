@@ -16,8 +16,8 @@ var Picture_event = {
     deletePicture_event: function(PicEv, callback) {  
         return db.query("delete from Picture_event where id_picture_event=? && id_user=?", [PicEv.id_picture_event,PicEv.id_user], callback);  
     },  
-    updatePicture_event: function(id, Picture_event, callback) {  
-        return db.query("update Picture_event set picture_event_name=?,picture_event_body=?,id_user=?,id_event=? where id_picture_event=?", [Picture_event.picture_event_name, Picture_event.picture_event_body, Picture_event.id_user, Picture_event.id_event, id], callback);  
+    updatePicture_event: function(Picture_event, callback) {  
+        return db.query("update Picture_event set id_status_content=? where id_picture_event=?", [Picture_event.id_status_content, Picture_event.id_picture_event], callback);  
     }  
 };  
 module.exports = Picture_event;  

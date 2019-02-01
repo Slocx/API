@@ -50,8 +50,8 @@ router.delete('/', function(req, res, next) {
         }  
     });  
 });  
-router.put('/:id', function(req, res, next) {  
-    Comment.updateComment(req.params.id, req.body, function(err, rows) {  
+router.put('/', function(req, res, next) {  
+    Comment.updateComment(req.body, function(err, rows) {  
         if (err) {  
             res.json(err);  
         } else {  
