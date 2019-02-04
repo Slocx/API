@@ -12,7 +12,7 @@ router.get('/:id?', function(req, res, next) {
             }  
         });  
     } 
-    if (req.body.id_picture_event) {  
+    else if (req.body.id_picture_event && req.body.id_status_content) {  
         Comment.getCommentsByIdPictureEvent(req.body, function(err, rows) {  
             if (err) {  
                 res.json(err);  
@@ -20,7 +20,16 @@ router.get('/:id?', function(req, res, next) {
                 res.json(rows);  
             }  
         });  
-    } else {  
+    } else if (req.body.id_status_content) {  
+        Comment.getCommentsByStatus(req.body, function(err, rows) {  
+            if (err) {  
+                res.json(err);  
+            } else {  
+                res.json(rows);  
+            }  
+        });  
+    } 
+    else {  
         Comment.getAllComments(function(err, rows) {  
             if (err) {  
                 res.json(err);  

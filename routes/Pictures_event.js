@@ -19,7 +19,15 @@ router.get('/:id?', function(req, res, next) {
                 res.json(rows);
             }
     });
-    }else {  
+    } else if(req.body.id_status_content){
+        Picture_event.getPicturesByStatus(req.body, function(err,rows){
+            if(err){
+                res.json(err);
+            } else {
+                res.json(rows);
+            }
+    });
+    } else {  
         Picture_event.getAllPictures_event(function(err, rows) {  
             if (err) {  
                 res.json(err);  
@@ -41,7 +49,7 @@ router.post('/', function(req, res, next) {
 });  
 
 router.delete('/', function(req, res, next) {
-    if(req.body.id_picture_event && req.body.id_user){
+    if(req.body.id_picture_event){
         Picture_event.deletePicture_event(req.body, function(err, count) {  
             if (err) {  
                 res.json(err);  

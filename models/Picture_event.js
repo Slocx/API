@@ -9,12 +9,14 @@ var Picture_event = {
     getPictures_Picture_eventByIdEvent: function(PicEv, callback) {  
         return db.query("select * from Picture_event where id_event=? && id_status_content=? Order by created_at DESC", [PicEv.id_event,PicEv.id_status_content], callback);  
     },    
-
+    getPicturesByStatus: function(PicEv, callback) {  
+        return db.query("select * from Picture_event where id_status_content=?", [PicEv.id_status_content], callback);  
+    },   
     addPicture_event: function(Picture_event, callback) {  
         return db.query("Insert into Picture_event(picture_event_name, picture_event_body, id_user, id_event) values(?,?,?,?)", [Picture_event.picture_event_name, Picture_event.picture_event_body, Picture_event.id_user, Picture_event.id_event], callback);  
     },  
     deletePicture_event: function(PicEv, callback) {  
-        return db.query("delete from Picture_event where id_picture_event=? && id_user=?", [PicEv.id_picture_event,PicEv.id_user], callback);  
+        return db.query("delete from Picture_event where id_picture_event=?", [PicEv.id_picture_event], callback);  
     },  
     updatePicture_event: function(Picture_event, callback) {  
         return db.query("update Picture_event set id_status_content=? where id_picture_event=?", [Picture_event.id_status_content, Picture_event.id_picture_event], callback);  

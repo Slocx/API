@@ -3,7 +3,7 @@ var router = express.Router();
 var Register = require('../models/Register');
 
 router.get('/', function(req, res, next) {  
-    if (req.body) {  
+    if (req.body.id_user && req.body.id_event) {  
         Register.getRegistersById(req.body, function(err, rows) { 
             if(JSON.stringify(rows.length)==1) { 
             if (err) {  
@@ -15,6 +15,14 @@ router.get('/', function(req, res, next) {
             res.send({isRegistered:0});
         }
     });  
+    }else if(req.body.id_event) {  
+        Register.getUserByEvent(req.body.id_event, function(err, rows) {  
+            if (err) {  
+                res.json(err);  
+            } else {  
+                res.json(rows);  
+            }  
+        });  
     } else {  
         Register.getAllRegisters(function(err, rows) {  
             if (err) {  
